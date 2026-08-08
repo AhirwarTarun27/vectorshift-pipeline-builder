@@ -1,0 +1,64 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+// --- Header ---
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+  background-color: var(--color-surface-raised);
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-field);
+  background-color: var(--color-brand);
+  color: var(--color-ink-on-brand);
+  box-shadow: var(--shadow-panel);
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--color-ink-muted);
+}
+
+// --- Stage ---
+.stage {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+}
+
+.submitDock {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  translate: -50% 0;
+}
+
+@media (max-width: 40rem) {
+  .subtitle {
+    display: none;
+  }
+
+  .submitDock {
+    bottom: 0.75rem;
+  }
+}

@@ -70,7 +70,6 @@ export const PipelineCanvas = () => {
         onInit={setReactFlowInstance}
         nodeTypes={nodeTypes}
         proOptions={proOptions}
-        snapGrid={[gridSize, gridSize]}
         connectionLineType="smoothstep"
       >
         <Background gap={gridSize} />

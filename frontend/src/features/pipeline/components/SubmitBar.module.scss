@@ -1,8 +1,9 @@
+@use "../../../styles/tokens" as t;
+
 .bar {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 1rem;
 }
 
 .button {
@@ -25,12 +26,17 @@
     box-shadow var(--duration-fast),
     translate var(--duration-fast);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-brand-strong);
   }
 
-  &:active {
+  &:active:not(:disabled) {
     translate: 0 1px;
+  }
+
+  &:disabled {
+    background-color: var(--color-brand-strong);
+    cursor: progress;
   }
 
   &:focus-visible {
@@ -38,5 +44,103 @@
     box-shadow:
       0 0 0 2px var(--color-canvas),
       0 0 0 4px var(--color-brand-soft);
+  }
+}
+
+.spinner {
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
+}
+
+// --- Result ---
+.result {
+  position: absolute;
+  bottom: calc(100% + 0.75rem);
+  left: 50%;
+  translate: -50% 0;
+}
+
+.result:empty {
+  display: none;
+}
+
+.report {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  width: max-content;
+  max-width: calc(100vw - 1.5rem);
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-field);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-panel);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--color-ink-muted);
+}
+
+.stat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3125rem;
+
+  strong {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+}
+
+.verdictOk,
+.verdictBad {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--color-line);
+  font-weight: 600;
+}
+
+.verdictOk {
+  color: var(--color-success);
+}
+
+.verdictBad {
+  color: var(--color-warning);
+}
+
+@media (max-width: 30rem) {
+  .verdictOk,
+  .verdictBad {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: max-content;
+  max-width: min(34rem, calc(100vw - 1.5rem));
+  padding: 0.5rem 0.875rem;
+  border: 1px solid rgba(t.$color-danger, 0.4);
+  border-radius: var(--radius-field);
+  background-color: rgba(t.$color-danger, 0.08);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--color-danger);
+
+  svg {
+    flex-shrink: 0;
   }
 }

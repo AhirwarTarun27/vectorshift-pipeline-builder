@@ -1,8 +1,8 @@
-import { memo, useCallback, useEffect, useMemo, useRef } from "react";
-import { useUpdateNodeInternals } from "reactflow";
+import { memo, useCallback, useMemo } from "react";
 import { X } from "lucide-react";
 
 import { usePipelineStore } from "features/pipeline/store/usePipelineStore";
+import { useNodeHandleSync } from "features/pipeline/hooks/useNodeHandleSync";
 import { getDefinition } from "./definitions";
 import { resolveFieldRenderer } from "./fields";
 import { NodeHandle } from "./handles/NodeHandle";
@@ -19,34 +19,18 @@ const BaseNodeComponent = ({ id, data, type, selected }) => {
 
   const updateNodeField = usePipelineStore((state) => state.updateNodeField);
   const removeNode = usePipelineStore((state) => state.removeNode);
-  const pruneHandleEdges = usePipelineStore((state) => state.pruneHandleEdges);
-
-  const updateNodeInternals = useUpdateNodeInternals();
-  const nodeRef = useRef(null);
 
   const handles = useMemo(
     () => layoutHandles(resolveHandles(definition, data)),
     [definition, data],
   );
 
-  const handleKey = useMemo(
-    () => handles.map((handle) => qualifyHandleId(id, handle.id)).join("|"),
+  const handleIds = useMemo(
+    () => handles.map((handle) => qualifyHandleId(id, handle.id)),
     [handles, id],
   );
 
-  useEffect(() => {
-    updateNodeInternals(id);
-    pruneHandleEdges(id, handleKey ? handleKey.split("|") : []);
-  }, [id, handleKey, updateNodeInternals, pruneHandleEdges]);
-
-  useEffect(() => {
-    const element = nodeRef.current;
-    if (!element || typeof ResizeObserver === "undefined") return undefined;
-
-    const observer = new ResizeObserver(() => updateNodeInternals(id));
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [id, updateNodeInternals]);
+  const nodeRef = useNodeHandleSync(id, handleIds);
 
   const handleFieldChange = useCallback(
     (name, value) => updateNodeField(id, name, value),

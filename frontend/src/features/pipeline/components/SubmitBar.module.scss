@@ -1,0 +1,42 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 10rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius-field);
+  background-color: var(--color-brand);
+  color: var(--color-ink-on-brand);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-panel);
+  transition:
+    background-color var(--duration-fast),
+    box-shadow var(--duration-fast),
+    translate var(--duration-fast);
+
+  &:hover {
+    background-color: var(--color-brand-strong);
+  }
+
+  &:active {
+    translate: 0 1px;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--color-canvas),
+      0 0 0 4px var(--color-brand-soft);
+  }
+}

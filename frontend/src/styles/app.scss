@@ -1,0 +1,59 @@
+@use "tokens" as t;
+@use "reset";
+@use "reactflow";
+
+:root {
+  // --- Surfaces ---
+  --color-canvas: #{t.$color-canvas};
+  --color-surface: #{t.$color-surface};
+  --color-surface-raised: #{t.$color-surface-raised};
+  --color-surface-sunken: #{t.$color-surface-sunken};
+  --color-surface-hover: #{t.$color-surface-hover};
+
+  // --- Lines ---
+  --color-line: #{t.$color-line};
+  --color-line-strong: #{t.$color-line-strong};
+
+  // --- Text ---
+  --color-ink: #{t.$color-ink};
+  --color-ink-muted: #{t.$color-ink-muted};
+  --color-ink-subtle: #{t.$color-ink-subtle};
+
+  // --- Brand ---
+  --color-brand: #{t.$color-brand};
+  --color-brand-soft: #{t.$color-brand-soft};
+  --color-brand-strong: #{t.$color-brand-strong};
+  --color-ink-on-brand: #{t.$color-ink-on-brand};
+
+  // --- Status ---
+  --color-success: #{t.$color-success};
+  --color-danger: #{t.$color-danger};
+  --color-warning: #{t.$color-warning};
+
+  // --- Overlays ---
+  --color-canvas-veil: #{t.$color-canvas-veil};
+  --color-brand-veil: #{t.$color-brand-veil};
+
+  // --- Per-category node accents ---
+  @each $name, $value in t.$node-accents {
+    --color-node-#{$name}: #{$value};
+  }
+
+  // --- Shape ---
+  --radius-node: #{t.$radius-node};
+  --radius-field: #{t.$radius-field};
+  --radius-tight: #{t.$radius-tight};
+  --radius-pill: #{t.$radius-pill};
+
+  // --- Elevation ---
+  --shadow-node: #{t.$shadow-node};
+  --shadow-node-selected: #{t.$shadow-node-selected};
+  --shadow-panel: #{t.$shadow-panel};
+
+  // --- Type ---
+  --font-sans: #{t.$font-sans};
+  --font-mono: #{t.$font-mono};
+
+  // --- Motion ---
+  --duration-fast: #{t.$duration-fast};
+}

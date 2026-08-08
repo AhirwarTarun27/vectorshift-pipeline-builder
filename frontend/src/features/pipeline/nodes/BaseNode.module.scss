@@ -1,0 +1,86 @@
+.node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  min-width: 200px;
+  max-width: 460px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-node);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-node);
+  transition:
+    border-color var(--duration-fast),
+    box-shadow var(--duration-fast);
+
+  &:hover {
+    border-color: var(--color-line-strong);
+  }
+
+  &:hover .deleteButton {
+    opacity: 1;
+  }
+}
+
+.nodeSelected {
+  border-color: var(--color-brand);
+  box-shadow: var(--shadow-node-selected);
+
+  &:hover {
+    border-color: var(--color-brand);
+  }
+}
+
+// --- Header ---
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.icon {
+  color: var(--node-accent);
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  color: var(--color-ink);
+}
+
+.deleteButton {
+  padding: 0.125rem;
+  border-radius: var(--radius-tight);
+  color: var(--color-ink-subtle);
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast),
+    background-color var(--duration-fast),
+    color var(--duration-fast),
+    box-shadow var(--duration-fast);
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+    color: var(--color-danger);
+  }
+
+  &:focus-visible {
+    opacity: 1;
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-brand);
+  }
+}
+
+// --- Body ---
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+}

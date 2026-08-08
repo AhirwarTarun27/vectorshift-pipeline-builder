@@ -1,0 +1,73 @@
+// --- Grid backdrop ---
+.react-flow__background circle {
+  fill: var(--color-line);
+}
+
+// --- Zoom controls ---
+.react-flow__controls {
+  border-radius: var(--radius-field);
+  box-shadow: var(--shadow-panel);
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-surface-raised);
+  color: var(--color-ink-muted);
+  transition:
+    background-color var(--duration-fast),
+    color var(--duration-fast);
+
+  &:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-ink);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+// --- Minimap ---
+.react-flow__minimap {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-field);
+  background-color: var(--color-surface);
+}
+
+.react-flow__minimap-mask {
+  fill: var(--color-canvas-veil);
+}
+
+.react-flow__minimap-node {
+  fill: var(--color-line-strong);
+  stroke: none;
+}
+
+// --- Edges ---
+.react-flow__edge-path,
+.react-flow__connectionline path {
+  stroke: var(--color-line-strong);
+  stroke-width: 1.5;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--color-brand-soft);
+}
+
+.react-flow__arrowhead polyline {
+  stroke: var(--color-line-strong);
+  fill: var(--color-line-strong);
+}
+
+// --- Selection ---
+.react-flow__nodesselection-rect,
+.react-flow__selection {
+  border: 1px solid var(--color-brand);
+  background: var(--color-brand-veil);
+}

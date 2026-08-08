@@ -1,0 +1,58 @@
+.handle:global(.react-flow__handle) {
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 2px solid var(--color-surface);
+  border-radius: var(--radius-pill);
+  transition: scale var(--duration-fast);
+
+  &:hover {
+    scale: 1.5;
+  }
+}
+
+.handle:global(.react-flow__handle-left),
+.handle:global(.react-flow__handle-right) {
+  transform-origin: 50% 0;
+}
+
+.handle:global(.react-flow__handle-top),
+.handle:global(.react-flow__handle-bottom) {
+  transform-origin: 0 50%;
+}
+
+// --- Labels ---
+.label {
+  position: absolute;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 1;
+  color: var(--color-ink-subtle);
+}
+
+.labelLeft {
+  right: 100%;
+  margin-right: 0.625rem;
+  translate: 0 -50%;
+  text-align: right;
+}
+
+.labelRight {
+  left: 100%;
+  margin-left: 0.625rem;
+  translate: 0 -50%;
+  text-align: left;
+}
+
+.labelTop {
+  bottom: 100%;
+  margin-bottom: 0.625rem;
+  translate: -50% 0;
+}
+
+.labelBottom {
+  top: 100%;
+  margin-top: 0.625rem;
+  translate: -50% 0;
+}

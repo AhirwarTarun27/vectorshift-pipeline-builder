@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/inter": "^5.3.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "lucide-react": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "reactflow": "^11.8.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.5.7"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,7 +25,44 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": [
+            "node_modules",
+            "src"
+          ],
+          "extensions": [
+            ".js",
+            ".jsx",
+            ".json"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "import/no-restricted-paths": [
+        "warn",
+        {
+          "zones": [
+            {
+              "target": "./src/features",
+              "from": "./src/app",
+              "message": "features/ must not import from app/. Dependencies flow one way: app -> features."
+            },
+            {
+              "target": "./src/app",
+              "from": "./src/features/pipeline",
+              "except": [
+                "./index.js"
+              ],
+              "message": "Import the pipeline feature through its public API: `features/pipeline`."
+            }
+          ]
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -35,5 +75,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "~1.77.8"
   }
 }

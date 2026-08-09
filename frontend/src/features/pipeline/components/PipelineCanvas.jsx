@@ -16,6 +16,8 @@ import styles from "./PipelineCanvas.module.scss";
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 
+const deleteKeys = ["Backspace", "Delete"];
+
 export const PipelineCanvas = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
@@ -52,11 +54,6 @@ export const PipelineCanvas = () => {
     [reactFlowInstance, getNodeID, addNode],
   );
 
-  const onDragOver = useCallback((event) => {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = "move";
-  }, []);
-
   return (
     <div ref={reactFlowWrapper} className={styles.canvas}>
       <ReactFlow
@@ -66,10 +63,11 @@ export const PipelineCanvas = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         onDrop={onDrop}
-        onDragOver={onDragOver}
         onInit={setReactFlowInstance}
         nodeTypes={nodeTypes}
         proOptions={proOptions}
+        deleteKeyCode={deleteKeys}
+        elevateEdgesOnSelect
         connectionLineType="smoothstep"
       >
         <Background gap={gridSize} />

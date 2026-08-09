@@ -12,6 +12,7 @@
   color: var(--color-ink);
   cursor: grab;
   user-select: none;
+  touch-action: none;
   transition:
     border-color var(--duration-fast),
     background-color var(--duration-fast);
@@ -24,6 +25,19 @@
   &:active {
     cursor: grabbing;
   }
+}
+
+.chipDragging {
+  opacity: 0.4;
+}
+
+.ghost {
+  position: fixed;
+  translate: -50% -50%;
+  z-index: 1000;
+  box-shadow: var(--shadow-node);
+  cursor: grabbing;
+  pointer-events: none;
 }
 
 .icon {

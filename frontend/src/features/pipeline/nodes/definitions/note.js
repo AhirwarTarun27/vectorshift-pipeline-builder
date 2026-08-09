@@ -12,7 +12,7 @@ export const noteDefinition = {
       label: "Note",
       type: "textarea",
       defaultValue: "",
-      placeholder: "Leave a note for your team",
+      placeholder: "Leave a note here",
     },
   ],
 };

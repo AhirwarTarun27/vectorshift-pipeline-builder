@@ -30,7 +30,7 @@ export const textDefinition = {
       label: "Text",
       type: "textarea",
       defaultValue: "{{input}}",
-      placeholder: "Write text, use {{ variables }} for inputs",
+      placeholder: "Type text or {{ vars }}",
     },
   ],
 };

@@ -38,7 +38,9 @@ export const TextAreaField = ({ id, field, value, onChange }) => {
       <div className={styles.textareaWrap}>
         <textarea
           id={id}
-          className={`${styles.textarea} nodrag nowheel`}
+          className={`${styles.textarea} ${
+            size.height === MAX_HEIGHT ? styles.textareaScroll : ""
+          } nodrag nowheel`}
           style={{ width: size.width, height: size.height }}
           value={value ?? ""}
           placeholder={field.placeholder}

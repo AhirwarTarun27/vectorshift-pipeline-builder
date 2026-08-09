@@ -66,8 +66,13 @@
 
   display: block;
   resize: none;
+  overflow-y: hidden;
 
   @include t.control-states;
+}
+
+.textareaScroll {
+  overflow-y: auto;
 }
 
 .mirror {
